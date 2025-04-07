@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ExpenseTracker from "./budgetAppByJalil/components/ExpenseTracker";
+import ExpenseTracker from "./budgetAppByJalil/components/ExpenseTracker.jsx";
+import Test from './budgetAppByJalil/components/Test'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
 
     {/* Budget App */}
     <ExpenseTracker />
+    {/* <Test /> */}
 
     </div>
   );
