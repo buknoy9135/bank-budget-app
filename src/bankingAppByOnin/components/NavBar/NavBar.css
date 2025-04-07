@@ -1,0 +1,31 @@
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  height: 80px;
+  background-image: linear-gradient(to bottom right, #010755, #0b0e6f);
+}
+
+.nav-title {
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  margin-left: 80px;
+}
+
+.emp-info {
+  color: white;
+  border: 1px solid white;
+  font-size: 12px;
+  font-weight: 800;
+  align-content: center;
+  height: 40px;
+  width: 150px;
+  margin-right: 80px;
+  background-image: linear-gradient(to bottom right, #010755, #0b0e6f);
+  border-radius: 12px;
+  cursor: pointer;
+}
