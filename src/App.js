@@ -1,14 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
-import ExpenseTracker from "./budgetAppByJalil/components/ExpenseTracker.jsx";
+import ExpenseTracker from "./budgetAppByJalil/components/Main/ExpenseTracker.jsx";
 import Test from './budgetAppByJalil/components/Test'
 import Home from "./bankingAppByOnin/components/Home/Home";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      {/* <ExpenseTracker /> */}
+      {/* <Home /> */}
+      <ExpenseTracker />
     </div>
   );
 }
