@@ -7,6 +7,11 @@ import userData from "../../assets/UserInfo.json";
 import transactionData from "../../assets/TransactionHistory.json";
 import ButtonsDiv from "../Buttons/ButtonsDiv";
 import BudgetTrackerButton from "../Buttons/BudgetTrackerButton";
+import Deposit from "../Deposit/Deposit";
+import Withdraw from "../Withdraw/Withdraw";
+import SendMoney from "../SendMoney/SendMoney";
+import AddUser from "../AddUser/AddUser";
+import RemoveUser from "../RemoveUser/RemoveUser";
 
 const userHeaders = ["Name", "Email", "Balance (Php)", "Handled By"];
 const transactionHeaders = [
@@ -17,27 +22,99 @@ const transactionHeaders = [
   "Date",
 ];
 
-function Home() {
-  const [employee, setEmployeeName] = useState("Onin");
+const Home = () => {
+  const header = "BANK ADMIN DASHBOARD";
+  const [isDepositShow, setShowDeposit] = useState(false);
+  const [isWithdrawShow, setShowWithdraw] = useState(false);
+  const [isSendMoneyShow, setShowSendMoney] = useState(false);
+  const [isAddUserShow, setShowAddUser] = useState(false);
+  const [isRemoveUserShow, setShowRemoveUser] = useState(false);
+
+  const [usersInfo, setUsersInfo] = useState(userData);
 
   return (
     <div className="home-div">
       <NavBar />
 
-      <h1 className="welcome">Welcome, {employee}!</h1>
+      <h1 className="header">{header}</h1>
 
       <h1 className="user-info-text">User Information:</h1>
 
-      <UserTable data={userData} headers={userHeaders} />
+      <UserTable data={usersInfo} headers={userHeaders} />
 
-      <ButtonsDiv />
+      <ButtonsDiv
+        setShowDeposit={setShowDeposit}
+        setShowWithdraw={setShowWithdraw}
+        setShowSendMoney={setShowSendMoney}
+        setShowAddUser={setShowAddUser}
+        setShowRemoveUser={setShowRemoveUser}
+      />
 
       <BudgetTrackerButton />
 
       <h1 className="history">Transaction History</h1>
       <TransactionHistory data={transactionData} headers={transactionHeaders} />
+
+      {isDepositShow && (
+        <Deposit
+          setShowDeposit={setShowDeposit}
+          setShowWithdraw={setShowWithdraw}
+          setShowSendMoney={setShowSendMoney}
+          setShowAddUser={setShowAddUser}
+          setShowRemoveUser={setShowRemoveUser}
+          setUsersInfo={setUsersInfo}
+          usersInfo={usersInfo}
+        />
+      )}
+
+      {isWithdrawShow && (
+        <Withdraw
+          setShowDeposit={setShowDeposit}
+          setShowWithdraw={setShowWithdraw}
+          setShowSendMoney={setShowSendMoney}
+          setShowAddUser={setShowAddUser}
+          setShowRemoveUser={setShowRemoveUser}
+          setUsersInfo={setUsersInfo}
+          usersInfo={usersInfo}
+        />
+      )}
+
+      {isSendMoneyShow && (
+        <SendMoney
+          setShowDeposit={setShowDeposit}
+          setShowWithdraw={setShowWithdraw}
+          setShowSendMoney={setShowSendMoney}
+          setShowAddUser={setShowAddUser}
+          setShowRemoveUser={setShowRemoveUser}
+          setUsersInfo={setUsersInfo}
+          usersInfo={usersInfo}
+        />
+      )}
+
+      {isAddUserShow && (
+        <AddUser
+          setShowDeposit={setShowDeposit}
+          setShowWithdraw={setShowWithdraw}
+          setShowSendMoney={setShowSendMoney}
+          setShowAddUser={setShowAddUser}
+          setShowRemoveUser={setShowRemoveUser}
+          setUsersInfo={setUsersInfo}
+        />
+      )}
+
+      {isRemoveUserShow && (
+        <RemoveUser
+          setShowDeposit={setShowDeposit}
+          setShowWithdraw={setShowWithdraw}
+          setShowSendMoney={setShowSendMoney}
+          setShowAddUser={setShowAddUser}
+          setShowRemoveUser={setShowRemoveUser}
+          setUsersInfo={setUsersInfo}
+          usersInfo={usersInfo}
+        />
+      )}
     </div>
   );
-}
+};
 
 export default Home;

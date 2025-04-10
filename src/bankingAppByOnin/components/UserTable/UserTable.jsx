@@ -1,7 +1,7 @@
 import "./UserTable.css";
 import UserTableRow from "./UserTableRow";
 
-function UserTable(props) {
+const UserTable = (props) => {
   const { data, headers } = props;
 
   return (
@@ -24,6 +24,6 @@ function UserTable(props) {
       </table>
     </div>
   );
-}
+};
 
 export default UserTable;

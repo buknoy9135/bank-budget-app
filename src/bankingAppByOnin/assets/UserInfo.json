@@ -2,25 +2,9 @@
   {
     "Name": "Juan Dela Cruz",
     "Email": "test@email.com",
-    "Balance": "1,000,000,000",
-    "Handled By": "Onin"
-  },
-  {
-    "Name": "Juan Dela Cruz",
-    "Email": "test@email.com",
-    "Balance": "1,000,000,000",
-    "Handled By": "Onin"
-  },
-  {
-    "Name": "Juan Dela Cruz",
-    "Email": "test@email.com",
-    "Balance": "1,000,000,000",
-    "Handled By": "Onin"
-  },
-  {
-    "Name": "Juan Dela Cruz",
-    "Email": "test@email.com",
-    "Balance": "1,000,000,000",
-    "Handled By": "Onin"
+    "Password": "",
+    "Balance": 1000000,
+    "Handled_by": "Onin",
+    "Id": 1
   }
 ]

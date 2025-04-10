@@ -1,0 +1,86 @@
+.withdraw-div {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+  background-color: rgba(0, 0, 0, 0.69);
+}
+
+.withdraw-form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 380px;
+  width: 350px;
+  border-radius: 24px;
+  background-color: white;
+  color: darkblue;
+  z-index: 1;
+}
+
+.withdraw-header {
+  font-size: 30px;
+  font-weight: 900;
+  margin: 10px;
+  margin-top: 0px;
+}
+
+.select-user-label,
+.amount-label {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 10px;
+  margin-top: 15px;
+}
+
+.dropdown-div select {
+  width: 280px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  color: darkblue;
+  border: 2px solid darkblue;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+option {
+  padding: 8px;
+  font-size: 16px;
+  background-color: white;
+}
+
+.amount-input {
+  font-weight: bold;
+  width: 260px;
+  padding: 8px 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid darkblue;
+  color: darkblue;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amount-input {
+  -moz-appearance: textfield;
+}
+
+.deposit-button {
+  margin-top: -10px;
+  margin-bottom: 30px;
+}

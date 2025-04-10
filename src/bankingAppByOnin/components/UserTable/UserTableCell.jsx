@@ -1,6 +1,6 @@
-function UserTableCell(props) {
-  const { children, className } = props;
-  return <td className={`user-table-cell ${className}`}>{children}</td>;
-}
+const UserTableCell = (props) => {
+  const { children } = props;
+  return <td className="user-table-cell">{children}</td>;
+};
 
 export default UserTableCell;
