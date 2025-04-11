@@ -1,25 +1,27 @@
 import UserTableCell from "./UserTableCell";
 
-function UserTableRow(props) {
+const formatNumberWithCommas = (num) => {
+  if (typeof num === "number") {
+    return num.toLocaleString();
+  }
+  return num;
+};
+
+const UserTableRow = (props) => {
   const { rowData } = props;
 
   return (
     <tr className="user-table-row">
-      {Object.entries(rowData).map(([key, value], index) => {
-        let cellClass = "";
+      {Object.entries(rowData)
+        .filter(([key]) => key !== "Password" && key !== "Id")
+        .map(([key, value], index) => {
+          let formattedValue =
+            key === "Balance" ? formatNumberWithCommas(value) : value;
 
-        if (key === "Status") {
-          cellClass = value === "Active" ? "active-status" : "inactive-status";
-        }
-
-        return (
-          <UserTableCell key={index} className={cellClass}>
-            {value}
-          </UserTableCell>
-        );
-      })}
+          return <UserTableCell key={index} children={formattedValue} />;
+        })}
     </tr>
   );
-}
+};
 
 export default UserTableRow;

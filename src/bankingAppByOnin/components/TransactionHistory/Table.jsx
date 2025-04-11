@@ -1,7 +1,7 @@
 import "./Table.css";
 import TableRow from "./TableRow";
 
-function Table(props) {
+const Table = (props) => {
   const { data, headers } = props;
 
   return (
@@ -24,6 +24,6 @@ function Table(props) {
       </table>
     </div>
   );
-}
+};
 
 export default Table;

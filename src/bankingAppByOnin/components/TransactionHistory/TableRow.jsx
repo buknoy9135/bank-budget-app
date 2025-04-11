@@ -1,9 +1,8 @@
 import TableCell from "./TableCell";
 
-function TableRow(props) {
+const TableRow = (props) => {
   const { rowData } = props;
 
-  // Conditionally assign the class to the row based on 'Type'
   const rowClass =
     rowData.Type === "Deposit" ? "deposit-row" : "withdrawal-row";
 
@@ -14,6 +13,6 @@ function TableRow(props) {
       })}
     </tr>
   );
-}
+};
 
 export default TableRow;

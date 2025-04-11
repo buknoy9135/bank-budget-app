@@ -2,15 +2,15 @@ import { useState } from "react";
 import "./Buttons.css";
 import budget from "../../assets/icons/budget.png";
 
-function BudgetTrackerButton() {
+const BudgetTrackerButton = () => {
   const [trackerShows, showTracker] = useState(false);
 
-  function showBudgetTracker() {
+  const showBudgetTracker = () => {
     showTracker(true);
 
     console.log("Budget Tracker Showing");
     console.log(trackerShows);
-  }
+  };
 
   return (
     <div className="budget-button-div">
@@ -20,6 +20,6 @@ function BudgetTrackerButton() {
       </button>
     </div>
   );
-}
+};
 
 export default BudgetTrackerButton;

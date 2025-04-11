@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import ExpenseTracker from "./budgetAppByJalil/components/Main/ExpenseTracker.jsx";
 import Test from './budgetAppByJalil/components/Test'

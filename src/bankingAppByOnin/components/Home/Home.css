@@ -1,21 +1,21 @@
 .home-div {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100vw;
-  background-image: linear-gradient(to top right, #f0f3f5, #e0e0e0);
+  background-color: white;
   margin: 0;
 }
 
-.welcome {
+.header {
   color: darkblue;
   margin-top: 120px;
+  font-weight: 900;
 }
 
 .user-info-text {
   color: darkblue;
-  font-size: 24px;
-  font-weight: 500;
 }
 
 .history {
