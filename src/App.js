@@ -7,8 +7,8 @@ import Home from "./bankingAppByOnin/components/Home/Home";
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
-      <ExpenseTracker />
+      <Home />
+      {/* <ExpenseTracker /> */}
     </div>
   );
 }

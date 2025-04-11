@@ -1,13 +1,11 @@
+import './SetBudgetButton.css';
 
-
-function SetBudgetButton({setCashOnHand, budget, setBudget}) {
-    const handleSetBudget = () => {
-        setCashOnHand(parseFloat(budget)); // Convert to number and update cashOnHand
-        setBudget(""); // Clear the input field after setting the budget
-      };
-    return (
-        <button onClick={handleSetBudget}>Set Budget</button>
-    )
+function SetBudgetButton({ openModal }) {
+  return (
+    <button className="SetBudgetButton" onClick={openModal}>
+      Set Budget
+    </button>
+  );
 }
 
 export default SetBudgetButton;

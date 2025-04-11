@@ -1,0 +1,133 @@
+/* Container for the entire component */
+.income {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-inline: 0 auto; */
+    padding: 0 20px 0 20px;
+    /* background: linear-gradient(to top right, #f9f9f9, #eaeaea); */
+    background: transparent;
+    /* border-radius: 8px; */
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+    box-sizing: border-box;
+}
+
+.title-container {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    margin: 0;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.title-container h1 {
+    color: #0a1e8c; 
+    text-align: center;
+    margin: 0;
+    font-size: 1.9rem;
+}
+
+/* Main content container - flex layout for side-by-side alignment */
+.content-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+/* Cashflow container */
+.cashflow-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 300px;
+}
+
+/* PieChart container */
+.piechart-container {
+    flex: 1;
+    background: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button column inside cashflow container */
+.button-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    /* margin-top: 20px; */
+    width: 100%;
+}
+
+/* Style for the button-like span elements */
+.button-column span.button-like {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    width: 250px;
+    max-width: 100%;
+    height: 20%;
+    background-color: #0a1e8c;
+    font-size: 0.9em;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    font-weight: normal;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin: 10px 0;
+}
+
+/* Add any specific styling for the text and number if needed */
+.button-column span.button-like .text {
+    text-align: left; /* Keep the text aligned left */
+}
+
+.button-column span.button-like .number {
+    text-align: right; /* Align the number to the right */
+}
+
+
+.button-column span.button-like:hover {
+    background-color: #0056b3;
+}
+
+.button-column span.button-like:active {
+    transform: scale(0.98);
+}
+
+.negative-balance {
+    color: red;
+    font-weight: normal;
+  }
+
+/* Mobile responsiveness - stack elements vertically on smaller screens */
+@media (max-width: 768px) {
+    .income {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .content-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .cashflow-container,
+    .piechart-container {
+        min-width: 100%;
+    }
+
+    .button-column span.button-like {
+        width: 100%;
+    }
+}

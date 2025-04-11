@@ -2,9 +2,10 @@ import { useState } from "react";
 import CashFlow from "../CashFlow/CashFlow.jsx";
 import ExpenseEntry from "../ExpenseEntry/ExpenseEntry.jsx";
 import DisplayEntry from "../DisplayEntry/DisplayEntry.jsx";
+import './ExpenseTracker.css'
+import Navigation from "../Navigation/Navigation.jsx";
 
 function ExpenseTracker() {
-  const header = "Expense Tracker";
 
   //useState for cash incoming
   const [budget, setBudget] = useState("");
@@ -29,9 +30,12 @@ function ExpenseTracker() {
     };
   });
 
+  const [expenseTotals, setExpenseTotals] = useState({});
+
   return (
     <div className="Budget-App">
-      <h1>{header}</h1>
+      {/* Navigation Bar */}
+      <Navigation />
 
       {/* container for cash onhand and cash remaining */}
       <CashFlow
@@ -40,6 +44,7 @@ function ExpenseTracker() {
         cashOnHand={cashOnHand}
         setCashOnHand={setCashOnHand}
         currentBalance={currentBalance}
+        expenseTotals={expenseTotals} // prop to pass values
       />
 
       {/* expense entry container*/}
@@ -55,7 +60,7 @@ function ExpenseTracker() {
       />
 
       {/* Displaying expense list */}
-      <DisplayEntry expenses={expensesWithBalance} setExpenses={setExpenses} />
+      <DisplayEntry expenses={expensesWithBalance} setExpenses={setExpenses} onExpenseTotalsChange={setExpenseTotals} />
     </div>
   );
 }

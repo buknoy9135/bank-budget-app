@@ -1,0 +1,105 @@
+/* Style for the container of the Set Budget Button */
+.set-budget-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* margin-top: 30px; */
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+/* Style for the Set Budget Button */
+.SetBudgetButton {
+    padding: 10px 5px 5px 5px;
+    font-size: 1.2em;
+    background-color: transparent;
+    color: #0a1e8c; 
+    font-weight: bold;
+    border: none;
+    border-bottom: solid 3px #0a1e8c; /* Bottom border only */
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 150px;
+    position: relative; 
+}
+
+/* Hover effect: only the text pops out */
+.SetBudgetButton:hover {
+    color: #0056b3; 
+    transform: scale(1.1); /* Slightly increase text size */
+    transition: transform 0.2s ease, color 0.2s ease; 
+}
+
+/* Ensuring the bottom border stays intact */
+.SetBudgetButton:hover {
+    border-bottom: solid 2px #0056b3; 
+}
+
+
+/* Unique Modal Styles for Set Budget */
+.set-budget-modal-overlay {
+    position: fixed;        /* Fixed to the entire viewport */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;  
+    align-items: center;   
+    z-index: 1000; /* Ensure modal is on top of other content */
+}
+
+/* Modal box itself for Set Budget */
+.set-budget-modal {
+    background-color: white;
+    color: darkblue;
+    padding: 20px;
+    border: 2px solid darkblue;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;            /* Adjust width of the modal */
+    max-width: 90%;         
+    min-width: 300px;     
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.set-budget-modal h2 {
+    margin: 5px;
+}
+
+/* Modal Inputs */
+.set-budget-modal select,
+.set-budget-modal input[type="number"],
+.set-budget-modal input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Modal Actions (Buttons) */
+.set-budget-modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+/* Action Buttons */
+.set-budget-modal-actions button {
+    padding: 8px 15px;
+    width: 105px;
+    background-color: #0a1e8c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.set-budget-modal-actions button:hover {
+    background-color: #0056b3; 
+}

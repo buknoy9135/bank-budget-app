@@ -1,0 +1,32 @@
+.navigation-panel {
+    display: flex;
+    align-items: center; /* Fix the invalid value */
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+.home-button {
+    margin-left: auto; /* Push it to the right */
+    width: auto; /* Optional: shrink to fit */
+    padding-right: 10px;
+}
+
+.home-button img {
+    width: 42x;
+    height: 42px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.home-button img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    filter: brightness(1.1); /* Slight brightness increase */
+}
+
+.home-button img:active {
+    transform: scale(0.95); /* Slight shrink on click */
+    filter: brightness(0.9); /* Slight darken */
+}

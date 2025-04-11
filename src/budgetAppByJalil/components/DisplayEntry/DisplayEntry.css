@@ -1,0 +1,234 @@
+.expense-list {
+    width: 100%; /* Same width as ExpenseEntry container */    
+    /* margin-inline: 0 auto; */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    /* background: linear-gradient(to top right, #f9f9f9, #eaeaea); */
+    background: transparent;
+    /* border-radius: 12px; */
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 0 20px;
+    padding-bottom: 10px;
+  }
+  
+  .expense-list h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #0a1e8c;
+    margin: 5px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .expense-list h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    width: 80px;
+    background-color: #0a1e8c;
+    border-radius: 2px;
+  }
+  
+  .entries-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .table-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    font-weight: bold;
+    padding: 10px 16px;
+    border-bottom: 2px solid #ccc;
+    color: #0a1e8c;
+    background-color: #f0f3f5;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .table-body {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 330px; /* Or whatever height you want */
+    overflow-y: auto;
+  }
+  
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #ddd;
+    background-color: white;
+    transition: background-color 0.2s;
+  }
+  
+  .table-row:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .table-row span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color:#0a1e8c;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  
+  .button-group button {
+    background-color: #0a1e8c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+  }
+  
+  .button-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-group button:active {
+    transform: scale(0.96);
+  }
+  
+  /* Responsive Design for Smaller Screens */
+  @media (max-width: 768px) {
+    .table-header {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      font-size: 0.9em;
+    }
+  
+    .table-row {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  
+    .button-group {
+      flex-direction: column;
+      gap: 6px;
+      align-items: flex-start;
+    }
+  }
+
+  /* Modal overlay style */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears on top of other elements */
+}
+
+/* Modal content style (Compact Box) */
+.modal {
+    background-color: white;
+    padding: 40px;
+    padding-bottom: 30px;
+    border-radius: 8px;
+    width: 350px; /* Compact width for the modal */
+    max-width: 100%; /* Ensure it scales responsively on smaller screens */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    border: 2px solid #0a1e8c; 
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    max-height: 40vh; /* Limit max height to 80% of the viewport height */
+    overflow-y: auto; /* Add scroll if content exceeds the height */
+}
+
+/* Close Button */
+.modal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: #aaa;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Close Button Hover */
+.modal .close-button:hover {
+    color: #0a1e8c;
+}
+
+
+/* Input fields and buttons inside the modal */
+.modal select,
+.modal input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 2px solid #0a1e8c;
+    font-size: 1em;
+    color:#0a1e8c;
+    margin-bottom: 12px; /* Adds space between elements */
+    box-sizing: border-box;
+}
+
+.modal button {
+  width: auto; /* Remove full width */
+  padding: 10px;
+  border-radius: 6px;
+  border: 2px solid #0a1e8c;
+  font-size: 1em;
+  margin: 0 8px; /* Adds horizontal gap between buttons */
+  box-sizing: border-box;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  align-items: center;
+  gap: 14px;  /* Optional: Adds more space between buttons */
+}
+
+
+/* Input and Select focus states */
+.modal select:focus,
+.modal input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Save and Cancel buttons */
+.modal button {
+    background-color: #0a1e8c;
+    width: 30%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal button:hover {
+    background-color: #0056b3;
+}
+
+.modal button:active {
+    transform: scale(0.96);
+}
+
+  
+  
