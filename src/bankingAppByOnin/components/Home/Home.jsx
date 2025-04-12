@@ -23,7 +23,6 @@ const transactionHeaders = [
 ];
 
 const Home = () => {
-  const header = "BANK ADMIN DASHBOARD";
   const [isDepositShow, setShowDeposit] = useState(false);
   const [isWithdrawShow, setShowWithdraw] = useState(false);
   const [isSendMoneyShow, setShowSendMoney] = useState(false);
@@ -31,12 +30,13 @@ const Home = () => {
   const [isRemoveUserShow, setShowRemoveUser] = useState(false);
 
   const [usersInfo, setUsersInfo] = useState(userData);
+  const [userTransaction, setUserTransaction] = useState(transactionData);
 
   return (
     <div className="home-div">
       <NavBar />
 
-      <h1 className="header">{header}</h1>
+      <h1 className="header">BANK ADMIN DASHBOARD</h1>
 
       <h1 className="user-info-text">User Information:</h1>
 
@@ -53,7 +53,7 @@ const Home = () => {
       <BudgetTrackerButton />
 
       <h1 className="history">Transaction History</h1>
-      <TransactionHistory data={transactionData} headers={transactionHeaders} />
+      <TransactionHistory data={userTransaction} headers={transactionHeaders} />
 
       {isDepositShow && (
         <Deposit
@@ -64,6 +64,7 @@ const Home = () => {
           setShowRemoveUser={setShowRemoveUser}
           setUsersInfo={setUsersInfo}
           usersInfo={usersInfo}
+          setUserTransaction={setUserTransaction}
         />
       )}
 
@@ -76,6 +77,7 @@ const Home = () => {
           setShowRemoveUser={setShowRemoveUser}
           setUsersInfo={setUsersInfo}
           usersInfo={usersInfo}
+          setUserTransaction={setUserTransaction}
         />
       )}
 
@@ -88,6 +90,7 @@ const Home = () => {
           setShowRemoveUser={setShowRemoveUser}
           setUsersInfo={setUsersInfo}
           usersInfo={usersInfo}
+          setUserTransaction={setUserTransaction}
         />
       )}
 
@@ -99,6 +102,7 @@ const Home = () => {
           setShowAddUser={setShowAddUser}
           setShowRemoveUser={setShowRemoveUser}
           setUsersInfo={setUsersInfo}
+          usersInfo={usersInfo}
         />
       )}
 

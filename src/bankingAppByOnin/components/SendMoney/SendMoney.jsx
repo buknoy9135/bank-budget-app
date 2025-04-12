@@ -13,12 +13,15 @@ const SendMoney = (props) => {
     setShowRemoveUser,
     setUsersInfo,
     usersInfo,
+    setUserTransaction,
   } = props;
 
   const [amount, setAmount] = useState("");
-
   const [sender, setSender] = useState("");
   const [receiver, setReceiver] = useState("");
+
+  const [isErrorShow, setShowError] = useState(false);
+  const [isInvalidAmount, setAmountError] = useState(false);
 
   const handleSelectedSender = (event) => {
     setSender(event.target.value);
@@ -30,6 +33,13 @@ const SendMoney = (props) => {
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
+  };
+
+  const handleTransactionHistory = (newTransaction) => {
+    setUserTransaction((prevTransactions) => [
+      ...prevTransactions,
+      newTransaction,
+    ]);
   };
 
   const sendMoney = (event) => {
@@ -46,17 +56,42 @@ const SendMoney = (props) => {
             return { ...user, Balance: user.Balance - newAmount };
           } else if (user.Name === receiver) {
             return { ...user, Balance: user.Balance + newAmount };
+          } else {
           }
 
           return user;
         });
+
+        const formatNumberWithCommas = (num) => {
+          return Number(num).toLocaleString();
+        };
+
+        const newTranHistory = {
+          Type: "Send Money",
+          Amount: `-${formatNumberWithCommas(amount)}`,
+          Sender: sender,
+          Recipient: receiver,
+          Date: new Date().toLocaleString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          }),
+        };
 
         setUsersInfo(updateUsers);
         setAmount("");
         setSender("");
         setReceiver("");
         setShowSendMoney(false);
+        handleTransactionHistory(newTranHistory);
+      } else {
+        setAmountError(true);
       }
+    } else {
+      setShowError(true);
     }
   };
 
@@ -112,6 +147,18 @@ const SendMoney = (props) => {
           step="0.01"
           required
         />
+
+        {isErrorShow && (
+          <div className="send-error">
+            <p>INVALID SENDER/RECEIVER</p>
+          </div>
+        )}
+
+        {isInvalidAmount && (
+          <div className="send-amount-error">
+            <p>INVALID AMOUNT</p>
+          </div>
+        )}
 
         <div className="send-button">
           <ButtonComp iconSrc={send} label="Send" type="submit" />

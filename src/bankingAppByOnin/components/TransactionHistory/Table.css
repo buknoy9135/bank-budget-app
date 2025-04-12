@@ -26,18 +26,26 @@
 }
 
 .table-cell {
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #ddd;
   text-align: left;
   color: darkblue;
 }
 
-/* Color change if 'Deposit' or 'Withdrawal' */
 .deposit-row {
   background-color: #c8e6c9;
 }
 
 .withdrawal-row {
   background-color: #ffcdd2;
+  color: white;
+}
+
+.deposit-row {
+  background-color: #c8e6c9;
+}
+
+.send-money-row {
+  background-color: #f8f8ca;
   color: white;
 }

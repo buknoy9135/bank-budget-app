@@ -17,6 +17,8 @@ const RemoveUser = (props) => {
 
   const [selectedUser, setSelectedUser] = useState("");
 
+  const [isErrorShow, setShowError] = useState(false);
+
   const handleSelectedUser = (event) => {
     setSelectedUser(event.target.value);
   };
@@ -24,12 +26,16 @@ const RemoveUser = (props) => {
   const removeUser = (event) => {
     event.preventDefault();
 
-    const updateUsers = usersInfo.filter((user) => user.Id !== selectedUser);
+    if (selectedUser) {
+      const updateUsers = usersInfo.filter((user) => user.Id !== selectedUser);
 
-    console.log(updateUsers);
+      console.log(updateUsers);
 
-    setUsersInfo(updateUsers);
-    setShowRemoveUser(false);
+      setUsersInfo(updateUsers);
+      setShowRemoveUser(false);
+    } else {
+      setShowError(true);
+    }
   };
 
   return (
@@ -57,6 +63,8 @@ const RemoveUser = (props) => {
             ))}
           </select>
         </div>
+
+        <div className="deposit-error">{isErrorShow && <p>SELECT USER</p>}</div>
 
         <div className="remove-user-button">
           <ButtonComp iconSrc={remove} label="Delete" type="submit" />

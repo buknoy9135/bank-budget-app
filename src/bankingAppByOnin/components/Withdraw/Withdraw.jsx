@@ -13,9 +13,14 @@ const Withdraw = (props) => {
     setShowRemoveUser,
     setUsersInfo,
     usersInfo,
+    setUserTransaction,
   } = props;
+
   const [selectedUser, setSelectedUser] = useState("");
   const [amount, setAmount] = useState("");
+
+  const [isErrorShow, setShowError] = useState(false);
+  const [isInvalidAmount, setAmountError] = useState(false);
 
   const handleSelectedUser = (event) => {
     setSelectedUser(event.target.value);
@@ -25,28 +30,61 @@ const Withdraw = (props) => {
     setAmount(event.target.value);
   };
 
+  const handleTransactionHistory = (newTransaction) => {
+    setUserTransaction((prevTransactions) => [
+      ...prevTransactions,
+      newTransaction,
+    ]);
+  };
+
   const withdrawMoney = (event) => {
     event.preventDefault();
 
     const newAmount = Number(amount);
 
+    let isValidTransaction = false;
+
     if (newAmount > 0 && selectedUser) {
       const updateUsers = usersInfo.map((user) => {
-        if (user.Balance > newAmount) {
-          if (user.Name === selectedUser) {
+        if (user.Name === selectedUser) {
+          if (user.Balance >= newAmount) {
+            isValidTransaction = true;
             return { ...user, Balance: user.Balance - newAmount };
+          } else {
+            setAmountError(true);
           }
-          return user;
         }
-
         return user;
       });
 
-      console.log(updateUsers);
+      if (isValidTransaction) {
+        const formatNumberWithCommas = (num) => {
+          return Number(num).toLocaleString();
+        };
 
-      setUsersInfo(updateUsers);
-      setAmount("");
-      setShowWithdraw(false);
+        const newTranHistory = {
+          Type: "Withdraw",
+          Amount: `-${formatNumberWithCommas(amount)}`,
+          Sender: selectedUser,
+          Recipient: "n/a",
+          Date: new Date().toLocaleString("en-US", {
+            month: "2-digit",
+            day: "2-digit",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+          }),
+        };
+
+        handleTransactionHistory(newTranHistory);
+
+        setUsersInfo(updateUsers);
+        setAmount("");
+        setShowWithdraw(false);
+      }
+    } else {
+      setShowError(true);
     }
   };
 
@@ -89,7 +127,19 @@ const Withdraw = (props) => {
           required
         />
 
-        <div className="deposit-button">
+        {isErrorShow && (
+          <div className="withdraw-error">
+            <p>SELECT USER</p>
+          </div>
+        )}
+
+        {isInvalidAmount && (
+          <div className="withdraw-amount-error">
+            <p>INVALID AMOUNT</p>
+          </div>
+        )}
+
+        <div className="withdraw-button">
           <ButtonComp iconSrc={withdraw} label="Withdraw" type="submit" />
         </div>
       </form>

@@ -13,9 +13,13 @@ const Deposit = (props) => {
     setShowRemoveUser,
     usersInfo,
     setUsersInfo,
+    setUserTransaction,
   } = props;
+
   const [selectedUser, setSelectedUser] = useState("");
   const [amount, setAmount] = useState("");
+
+  const [isErrorShow, setShowError] = useState(false);
 
   const handleSelectedUser = (event) => {
     setSelectedUser(event.target.value);
@@ -23,6 +27,13 @@ const Deposit = (props) => {
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
+  };
+
+  const handleTransactionHistory = (newTransaction) => {
+    setUserTransaction((prevTransactions) => [
+      ...prevTransactions,
+      newTransaction,
+    ]);
   };
 
   const depositMoney = (event) => {
@@ -41,9 +52,31 @@ const Deposit = (props) => {
 
       console.log(updateUsers);
 
+      const formatNumberWithCommas = (num) => {
+        return Number(num).toLocaleString();
+      };
+
+      const newTranHistory = {
+        Type: "Deposit",
+        Amount: formatNumberWithCommas(amount),
+        Sender: "n/a",
+        Recipient: selectedUser,
+        Date: new Date().toLocaleString("en-US", {
+          month: "2-digit",
+          day: "2-digit",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+        }),
+      };
+
       setUsersInfo(updateUsers);
       setAmount("");
       setShowDeposit(false);
+      handleTransactionHistory(newTranHistory);
+    } else {
+      setShowError(true);
     }
   };
 
@@ -85,6 +118,8 @@ const Deposit = (props) => {
           step="0.01"
           required
         />
+
+        <div className="deposit-error">{isErrorShow && <p>SELECT USER</p>}</div>
 
         <div className="deposit-button">
           <ButtonComp iconSrc={deposit} label="Deposit" type="submit" />

@@ -16,8 +16,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 380px;
-  width: 350px;
+  height: 365px;
+  width: 370px;
   border-radius: 24px;
   background-color: white;
   color: darkblue;
@@ -80,7 +80,27 @@ option {
   -moz-appearance: textfield;
 }
 
-.deposit-button {
-  margin-top: -10px;
+.withdraw-button {
+  margin-top: -25px;
   margin-bottom: 30px;
+}
+
+.withdraw-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: 900;
+  margin: 0;
+  margin-top: -60px;
+  margin-left: 165px;
+}
+
+.withdraw-amount-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: 900;
+  margin: 0;
+  margin-top: 100px;
+  margin-left: 165px;
 }
