@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "./Home.css";
 import NavBar from "../NavBar/NavBar";
 import UserTable from "../UserTable/UserTable";
@@ -12,6 +12,10 @@ import Withdraw from "../Withdraw/Withdraw";
 import SendMoney from "../SendMoney/SendMoney";
 import AddUser from "../AddUser/AddUser";
 import RemoveUser from "../RemoveUser/RemoveUser";
+import LogIn from "../LogInPage/LogIn";
+import ButtonComp from "../Buttons/ButtonComp";
+import addUser from "../../assets/icons/add-user.png";
+import EmployeeInfo from "../EmployeeInfo/EmployeeInfo";
 
 const userHeaders = ["Name", "Email", "Balance (Php)", "Handled By"];
 const transactionHeaders = [
@@ -32,28 +36,62 @@ const Home = () => {
   const [usersInfo, setUsersInfo] = useState(userData);
   const [userTransaction, setUserTransaction] = useState(transactionData);
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [isUserInfoShow, setShowUserInfo] = useState(false);
+
+  const showAddUser = () => {
+    setShowAddUser(true);
+  };
+
   return (
     <div className="home-div">
-      <NavBar />
+      <NavBar setShowUserInfo={setShowUserInfo} />
 
       <h1 className="header">BANK ADMIN DASHBOARD</h1>
 
       <h1 className="user-info-text">User Information:</h1>
 
-      <UserTable data={usersInfo} headers={userHeaders} />
+      {usersInfo.length === 0 && (
+        <div className="no-user-div">
+          <h1 className="no-user">NO USER TO SHOW</h1>
+          <ButtonComp
+            iconSrc={addUser}
+            label="Add User"
+            onClick={showAddUser}
+          />
+        </div>
+      )}
 
-      <ButtonsDiv
-        setShowDeposit={setShowDeposit}
-        setShowWithdraw={setShowWithdraw}
-        setShowSendMoney={setShowSendMoney}
-        setShowAddUser={setShowAddUser}
-        setShowRemoveUser={setShowRemoveUser}
-      />
+      {usersInfo.length > 0 && (
+        <UserTable data={usersInfo} headers={userHeaders} />
+      )}
+
+      {usersInfo.length > 0 && (
+        <ButtonsDiv
+          setShowDeposit={setShowDeposit}
+          setShowWithdraw={setShowWithdraw}
+          setShowSendMoney={setShowSendMoney}
+          setShowAddUser={setShowAddUser}
+          setShowRemoveUser={setShowRemoveUser}
+        />
+      )}
 
       <BudgetTrackerButton />
 
-      <h1 className="history">Transaction History</h1>
-      <TransactionHistory data={userTransaction} headers={transactionHeaders} />
+      <h1 className="history">Transaction History:</h1>
+      {userTransaction.length === 0 && (
+        <div className="no-history-div">
+          <h1 className="no-history">NO HISTORY TO SHOW</h1>
+        </div>
+      )}
+
+      {userTransaction.length > 0 && (
+        <TransactionHistory
+          data={userTransaction}
+          headers={transactionHeaders}
+        />
+      )}
 
       {isDepositShow && (
         <Deposit
@@ -117,6 +155,10 @@ const Home = () => {
           usersInfo={usersInfo}
         />
       )}
+
+      {!isLoggedIn && <LogIn setIsLoggedIn={setIsLoggedIn} />}
+
+      {isUserInfoShow && <EmployeeInfo />}
     </div>
   );
 };

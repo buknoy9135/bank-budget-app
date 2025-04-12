@@ -89,9 +89,11 @@ const SendMoney = (props) => {
         handleTransactionHistory(newTranHistory);
       } else {
         setAmountError(true);
+        setShowError(false);
       }
     } else {
       setShowError(true);
+      setAmountError(false);
     }
   };
 

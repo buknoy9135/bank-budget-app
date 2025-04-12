@@ -50,11 +50,15 @@ const AddUser = (props) => {
     const userNameChecker = /^\d/.test(userName);
     if (userNameChecker) {
       setNameError(true);
+      setShowError(false);
+      setPasswordError(false);
       return;
     }
 
-    if (password.length < 8) {
+    if (password.length < 6) {
       setPasswordError(true);
+      setNameError(false);
+      setShowError(false);
       return;
     }
 
@@ -84,6 +88,8 @@ const AddUser = (props) => {
       setShowAddUser(false);
     } else {
       setShowError(true);
+      setNameError(false);
+      setPasswordError(false);
     }
   };
 
@@ -132,7 +138,7 @@ const AddUser = (props) => {
           id="password"
           value={password}
           onChange={handleSetPassword}
-          placeholder="Enter password (min. 8 chars)"
+          placeholder="Enter password (min. 6 chars)"
           required
         />
 

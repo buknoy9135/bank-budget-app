@@ -61,7 +61,7 @@ option {
   margin-bottom: 30px;
 }
 
-.deposit-error {
+.remove-user-error {
   position: absolute;
   color: red;
   font-size: 10px;

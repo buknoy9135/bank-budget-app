@@ -2,6 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100%;
   width: 100vw;
   background-color: white;
@@ -23,4 +24,41 @@
   color: darkblue;
   margin: 0;
   margin-top: 50px;
+}
+
+.no-user {
+  color: darkblue;
+  font-style: italic;
+  font-size: 30px;
+  margin-bottom: -20px;
+}
+
+.no-user-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  width: 800px;
+  border: 2px solid darkblue;
+  border-radius: 24px;
+}
+
+.no-history {
+  color: darkblue;
+  font-style: italic;
+  font-size: 30px;
+}
+
+.no-history-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  width: 800px;
+  border: 2px solid darkblue;
+  border-radius: 24px;
+  margin-bottom: 50px;
+  margin-top: 20px;
 }

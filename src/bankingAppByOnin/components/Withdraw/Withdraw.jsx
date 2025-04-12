@@ -52,6 +52,7 @@ const Withdraw = (props) => {
             return { ...user, Balance: user.Balance - newAmount };
           } else {
             setAmountError(true);
+            setShowError(false);
           }
         }
         return user;

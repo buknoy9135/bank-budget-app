@@ -64,7 +64,9 @@ const RemoveUser = (props) => {
           </select>
         </div>
 
-        <div className="deposit-error">{isErrorShow && <p>SELECT USER</p>}</div>
+        <div className="remove-user-error">
+          {isErrorShow && <p>SELECT USER</p>}
+        </div>
 
         <div className="remove-user-button">
           <ButtonComp iconSrc={remove} label="Delete" type="submit" />
