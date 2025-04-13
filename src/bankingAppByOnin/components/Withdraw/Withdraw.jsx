@@ -28,6 +28,10 @@ const Withdraw = (props) => {
 
   const handleAmountChange = (event) => {
     setAmount(event.target.value);
+
+    if (event.target.value === "") {
+      setAmountError(false);
+    }
   };
 
   const handleTransactionHistory = (newTransaction) => {

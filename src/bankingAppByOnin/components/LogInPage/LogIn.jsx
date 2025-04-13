@@ -5,7 +5,7 @@ import login from "../../assets/icons/login.png";
 import employeeData from "../../assets/EmployeeData.json";
 
 const LogIn = (props) => {
-  const { setIsLoggedIn } = props;
+  const { setIsLoggedIn, setLoading } = props;
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,10 +15,18 @@ const LogIn = (props) => {
 
   const handleUsername = (event) => {
     setUsername(event.target.value);
+
+    if (event.target.value === "") {
+      setShowUsernameError(false);
+    }
   };
 
   const handlePassword = (event) => {
     setPassword(event.target.value);
+
+    if (event.target.value === "") {
+      setPasswordError(false);
+    }
   };
 
   const employeeLogin = (event) => {
@@ -47,6 +55,7 @@ const LogIn = (props) => {
 
       setUsername("");
       setPassword("");
+      setLoading(true);
     }
   };
 
@@ -89,7 +98,7 @@ const LogIn = (props) => {
           </div>
         )}
 
-        <LoginButton iconSrc={login} label="Login" type="submit" />
+        <LoginButton iconSrc={login} label="Log in" type="submit" />
       </form>
     </div>
   );

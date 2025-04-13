@@ -13,6 +13,7 @@ const RemoveUser = (props) => {
     setShowRemoveUser,
     usersInfo,
     setUsersInfo,
+    setLoading,
   } = props;
 
   const [selectedUser, setSelectedUser] = useState("");
@@ -33,6 +34,7 @@ const RemoveUser = (props) => {
 
       setUsersInfo(updateUsers);
       setShowRemoveUser(false);
+      setLoading(true);
     } else {
       setShowError(true);
     }

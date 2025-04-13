@@ -13,6 +13,7 @@ const AddUser = (props) => {
     setShowRemoveUser,
     setUsersInfo,
     usersInfo,
+    setLoading,
   } = props;
 
   const [userName, setUserName] = useState("");
@@ -34,6 +35,10 @@ const AddUser = (props) => {
 
   const handleSetPassword = (event) => {
     setPassword(event.target.value);
+
+    if (event.target.value === "") {
+      setPasswordError(false);
+    }
   };
 
   const handleSetAmount = (event) => {
@@ -62,11 +67,11 @@ const AddUser = (props) => {
       return;
     }
 
-    const newUserInfo = usersInfo.find(
+    const prevUser = usersInfo.find(
       (user) => user.Name === userName || user.Email === email
     );
 
-    if (!newUserInfo) {
+    if (!prevUser) {
       const formatNumberWithCommas = (num) => {
         return parseFloat(num.toLocaleString());
       };
@@ -86,6 +91,7 @@ const AddUser = (props) => {
       setPassword("");
       setAmount("");
       setShowAddUser(false);
+      setLoading(true);
     } else {
       setShowError(true);
       setNameError(false);
@@ -151,6 +157,8 @@ const AddUser = (props) => {
           value={amount}
           onChange={handleSetAmount}
           placeholder="Enter amount"
+          min="0"
+          step="0.01"
           required
         />
 

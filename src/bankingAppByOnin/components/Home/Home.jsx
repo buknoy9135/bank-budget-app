@@ -1,4 +1,4 @@
-import { use, useState } from "react";
+import { useState } from "react";
 import "./Home.css";
 import NavBar from "../NavBar/NavBar";
 import UserTable from "../UserTable/UserTable";
@@ -13,9 +13,9 @@ import SendMoney from "../SendMoney/SendMoney";
 import AddUser from "../AddUser/AddUser";
 import RemoveUser from "../RemoveUser/RemoveUser";
 import LogIn from "../LogInPage/LogIn";
-import ButtonComp from "../Buttons/ButtonComp";
-import addUser from "../../assets/icons/add-user.png";
 import EmployeeInfo from "../EmployeeInfo/EmployeeInfo";
+import NoUserDiv from "./NoUserDiv";
+import NoHistoryDiv from "./NoHistoryDiv";
 
 const userHeaders = ["Name", "Email", "Balance (Php)", "Handled By"];
 const transactionHeaders = [
@@ -40,9 +40,7 @@ const Home = () => {
 
   const [isUserInfoShow, setShowUserInfo] = useState(false);
 
-  const showAddUser = () => {
-    setShowAddUser(true);
-  };
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="home-div">
@@ -53,14 +51,12 @@ const Home = () => {
       <h1 className="user-info-text">User Information:</h1>
 
       {usersInfo.length === 0 && (
-        <div className="no-user-div">
-          <h1 className="no-user">NO USER TO SHOW</h1>
-          <ButtonComp
-            iconSrc={addUser}
-            label="Add User"
-            onClick={showAddUser}
-          />
-        </div>
+        <NoUserDiv
+          showNoUser={usersInfo.length === 0}
+          setShowAddUser={setShowAddUser}
+          loading={loading}
+          setLoading={setLoading}
+        />
       )}
 
       {usersInfo.length > 0 && (
@@ -81,9 +77,7 @@ const Home = () => {
 
       <h1 className="history">Transaction History:</h1>
       {userTransaction.length === 0 && (
-        <div className="no-history-div">
-          <h1 className="no-history">NO HISTORY TO SHOW</h1>
-        </div>
+        <NoHistoryDiv loading={loading} setLoading={setLoading} />
       )}
 
       {userTransaction.length > 0 && (
@@ -141,6 +135,7 @@ const Home = () => {
           setShowRemoveUser={setShowRemoveUser}
           setUsersInfo={setUsersInfo}
           usersInfo={usersInfo}
+          setLoading={setLoading}
         />
       )}
 
@@ -153,10 +148,13 @@ const Home = () => {
           setShowRemoveUser={setShowRemoveUser}
           setUsersInfo={setUsersInfo}
           usersInfo={usersInfo}
+          setLoading={setLoading}
         />
       )}
 
-      {!isLoggedIn && <LogIn setIsLoggedIn={setIsLoggedIn} />}
+      {!isLoggedIn && (
+        <LogIn setIsLoggedIn={setIsLoggedIn} setLoading={setLoading} />
+      )}
 
       {isUserInfoShow && <EmployeeInfo />}
     </div>
