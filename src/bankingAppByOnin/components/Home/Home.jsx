@@ -52,7 +52,6 @@ const Home = () => {
 
       {usersInfo.length === 0 && (
         <NoUserDiv
-          showNoUser={usersInfo.length === 0}
           setShowAddUser={setShowAddUser}
           loading={loading}
           setLoading={setLoading}
