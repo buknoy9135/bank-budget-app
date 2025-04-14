@@ -5,7 +5,7 @@ import login from "../../assets/icons/login.png";
 import employeeData from "../../assets/EmployeeData.json";
 
 const LogIn = (props) => {
-  const { setIsLoggedIn, setLoading } = props;
+  const { setIsLoggedIn, setLoading, setLoggedInEmployee } = props;
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -51,8 +51,8 @@ const LogIn = (props) => {
     }
 
     if (employeeInfo) {
+      setLoggedInEmployee(employeeInfo);
       setIsLoggedIn(true);
-
       setUsername("");
       setPassword("");
       setLoading(true);

@@ -5,12 +5,12 @@ const Table = (props) => {
   const { data, headers } = props;
 
   return (
-    <div className="table-div">
-      <table className="table">
+    <div className="th-table-div">
+      <table className="th-table">
         <thead>
-          <tr className="table-header">
+          <tr className="th-table-header">
             {headers.map((header, index) => (
-              <th key={index} className="table-header-cell">
+              <th key={index} className="th-table-header-cell">
                 {header}
               </th>
             ))}

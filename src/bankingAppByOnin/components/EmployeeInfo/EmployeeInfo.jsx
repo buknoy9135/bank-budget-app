@@ -1,10 +1,11 @@
 import "./EmployeeInfo.css";
-import employeeInfo from "../../assets/EmployeeData.json";
 
-const EmployeeInfo = () => {
-  const empName = employeeInfo[0].Name;
-  const empEmail = employeeInfo[0].Email;
-  const empId = employeeInfo[0].EmployeeId;
+const EmployeeInfo = (props) => {
+  const { loggedInEmployee } = props;
+
+  const empName = loggedInEmployee.Name;
+  const empEmail = loggedInEmployee.Email;
+  const empId = loggedInEmployee.EmployeeId;
 
   return (
     <div className="emp-info-div">

@@ -37,6 +37,7 @@ const Home = () => {
   const [userTransaction, setUserTransaction] = useState(transactionData);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [loggedInEmployee, setLoggedInEmployee] = useState("");
 
   const [isUserInfoShow, setShowUserInfo] = useState(false);
 
@@ -152,10 +153,14 @@ const Home = () => {
       )}
 
       {!isLoggedIn && (
-        <LogIn setIsLoggedIn={setIsLoggedIn} setLoading={setLoading} />
+        <LogIn
+          setIsLoggedIn={setIsLoggedIn}
+          setLoading={setLoading}
+          setLoggedInEmployee={setLoggedInEmployee}
+        />
       )}
 
-      {isUserInfoShow && <EmployeeInfo />}
+      {isUserInfoShow && <EmployeeInfo loggedInEmployee={loggedInEmployee} />}
     </div>
   );
 };

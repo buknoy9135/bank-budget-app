@@ -11,7 +11,7 @@ const TableRow = (props) => {
       : "withdrawal-row";
 
   return (
-    <tr className={`table-row ${rowClass}`}>
+    <tr className={`th-table-row ${rowClass}`}>
       {Object.entries(rowData).map(([key, value], index) => {
         return <TableCell key={index} children={value} />;
       })}

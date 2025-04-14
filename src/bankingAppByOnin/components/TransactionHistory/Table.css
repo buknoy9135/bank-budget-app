@@ -1,4 +1,4 @@
-.table-div {
+.th-table-div {
   display: flex;
   align-content: center;
   justify-content: center;
@@ -8,7 +8,7 @@
   margin-bottom: 50px;
 }
 
-.table {
+.th-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.table-header-cell {
+.th-table-header-cell {
   font-size: 15px;
   padding: 15px;
   border: 1px solid #ddd;
@@ -25,7 +25,7 @@
   background-image: linear-gradient(to top right, #010755, #0b0e6f);
 }
 
-.table-cell {
+.th-table-cell {
   padding: 20px;
   border: 1px solid #ddd;
   text-align: left;
