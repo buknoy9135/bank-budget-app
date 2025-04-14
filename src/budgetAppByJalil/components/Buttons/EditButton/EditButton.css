@@ -25,8 +25,8 @@
     display: flex;
     justify-content: center ; 
     align-items: center ;
-    z-index: 1000; /* Ensure modal is on top */
-    overflow: hidden; /* Prevent scrolling when modal is open */
+    z-index: 1000; 
+    overflow: hidden; 
 }
 
 /* Modal Box */
