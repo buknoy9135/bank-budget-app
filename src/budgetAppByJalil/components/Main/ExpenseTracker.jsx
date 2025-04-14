@@ -5,7 +5,7 @@ import DisplayEntry from "../DisplayEntry/DisplayEntry.jsx";
 import './ExpenseTracker.css'
 import Navigation from "../Navigation/Navigation.jsx";
 
-function ExpenseTracker() {
+function ExpenseTracker( {closeTracker} ) {
 
   //useState for cash incoming
   const [budget, setBudget] = useState("");
@@ -35,7 +35,7 @@ function ExpenseTracker() {
   return (
     <div className="Budget-App">
       {/* Navigation Bar */}
-      <Navigation />
+      <Navigation closeTracker={closeTracker}/>
 
       {/* container for cash onhand and cash remaining */}
       <CashFlow
