@@ -16,8 +16,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 530px;
-  width: 350px;
+  height: 550px;
+  width: 370px;
   border-radius: 24px;
   background-color: white;
   color: darkblue;
@@ -62,6 +62,35 @@
 }
 
 .add-button {
-  margin-top: -10px;
+  margin-top: 0px;
   margin-bottom: 30px;
+}
+
+.user-exist-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 305px;
+}
+
+.invalid-password-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 73px;
+  margin-left: 150px;
+}
+
+.invalid-name-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: -245px;
+  margin-left: 184px;
 }

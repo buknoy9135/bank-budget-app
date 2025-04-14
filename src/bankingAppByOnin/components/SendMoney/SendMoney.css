@@ -16,8 +16,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 460px;
-  width: 350px;
+  height: 470px;
+  width: 370px;
   border-radius: 24px;
   background-color: white;
   color: darkblue;
@@ -77,10 +77,31 @@ option {
 }
 
 .amount-input {
+  -webkit-appearance: none;
   -moz-appearance: textfield;
+  appearance: none;
 }
 
 .send-button {
-  margin-top: -10px;
+  margin-top: 0px;
   margin-bottom: 30px;
+}
+
+.send-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 230px;
+}
+
+.send-amount-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0;
+  margin-top: 158px;
+  margin-left: 165px;
 }

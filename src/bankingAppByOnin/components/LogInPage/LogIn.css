@@ -1,0 +1,64 @@
+.login-div {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to bottom right, #010755, #0b0e6f);
+  margin: 0;
+}
+
+.login-title {
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.emp-login-text {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.username-input {
+  font-weight: bold;
+  width: 260px;
+  padding: 15px 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 2px solid darkblue;
+  color: darkblue;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.username-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: 900;
+  margin: 0;
+  margin-top: 45px;
+  margin-left: 145px;
+}
+
+.password-error {
+  position: absolute;
+  color: red;
+  font-size: 10px;
+  font-weight: 900;
+  margin: 0;
+  margin-top: 100px;
+  margin-left: 145px;
+}

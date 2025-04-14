@@ -12,12 +12,18 @@ const AddUser = (props) => {
     setShowAddUser,
     setShowRemoveUser,
     setUsersInfo,
+    usersInfo,
+    setLoading,
   } = props;
 
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [amount, setAmount] = useState("");
+
+  const [isErrorShow, setShowError] = useState(false);
+  const [isInvalidPassword, setPasswordError] = useState(false);
+  const [isInvalidName, setNameError] = useState(false);
 
   const handleAddUser = (event) => {
     setUserName(event.target.value);
@@ -29,6 +35,10 @@ const AddUser = (props) => {
 
   const handleSetPassword = (event) => {
     setPassword(event.target.value);
+
+    if (event.target.value === "") {
+      setPasswordError(false);
+    }
   };
 
   const handleSetAmount = (event) => {
@@ -42,25 +52,51 @@ const AddUser = (props) => {
   const addNewUser = (event) => {
     event.preventDefault();
 
-    const formatNumberWithCommas = (num) => {
-      return parseFloat(num.toLocaleString());
-    };
+    const userNameChecker = /^\d/.test(userName);
+    if (userNameChecker) {
+      setNameError(true);
+      setShowError(false);
+      setPasswordError(false);
+      return;
+    }
 
-    const newUser = {
-      Name: userName,
-      Email: email,
-      Password: password,
-      Balance: formatNumberWithCommas(amount),
-      Handled_by: "Onin",
-      Id: crypto.randomUUID(),
-    };
+    if (password.length < 6) {
+      setPasswordError(true);
+      setNameError(false);
+      setShowError(false);
+      return;
+    }
 
-    handleNewUser(newUser);
-    setUserName("");
-    setEmail("");
-    setPassword("");
-    setAmount("");
-    setShowAddUser(false);
+    const prevUser = usersInfo.find(
+      (user) => user.Name === userName || user.Email === email
+    );
+
+    if (!prevUser) {
+      const formatNumberWithCommas = (num) => {
+        return parseFloat(num.toLocaleString());
+      };
+
+      const newUser = {
+        Name: userName,
+        Email: email,
+        Password: password,
+        Balance: formatNumberWithCommas(amount),
+        Handled_by: "Onin",
+        Id: crypto.randomUUID(),
+      };
+
+      handleNewUser(newUser);
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setAmount("");
+      setShowAddUser(false);
+      setLoading(true);
+    } else {
+      setShowError(true);
+      setNameError(false);
+      setPasswordError(false);
+    }
   };
 
   return (
@@ -108,7 +144,7 @@ const AddUser = (props) => {
           id="password"
           value={password}
           onChange={handleSetPassword}
-          placeholder="Enter password"
+          placeholder="Enter password (min. 6 chars)"
           required
         />
 
@@ -121,8 +157,28 @@ const AddUser = (props) => {
           value={amount}
           onChange={handleSetAmount}
           placeholder="Enter amount"
+          min="0"
+          step="0.01"
           required
         />
+
+        {isErrorShow && (
+          <div className="user-exist-error">
+            <p>USER ALREADY EXIST</p>
+          </div>
+        )}
+
+        {isInvalidPassword && (
+          <div className="invalid-password-error">
+            <p>INVALID PASSWORD</p>
+          </div>
+        )}
+
+        {isInvalidName && (
+          <div className="invalid-name-error">
+            <p>INVALID NAME</p>
+          </div>
+        )}
 
         <div className="add-button">
           <ButtonComp iconSrc={add} label="Add User" type="submit" />

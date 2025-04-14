@@ -13,9 +13,12 @@ const RemoveUser = (props) => {
     setShowRemoveUser,
     usersInfo,
     setUsersInfo,
+    setLoading,
   } = props;
 
   const [selectedUser, setSelectedUser] = useState("");
+
+  const [isErrorShow, setShowError] = useState(false);
 
   const handleSelectedUser = (event) => {
     setSelectedUser(event.target.value);
@@ -24,12 +27,17 @@ const RemoveUser = (props) => {
   const removeUser = (event) => {
     event.preventDefault();
 
-    const updateUsers = usersInfo.filter((user) => user.Id !== selectedUser);
+    if (selectedUser) {
+      const updateUsers = usersInfo.filter((user) => user.Id !== selectedUser);
 
-    console.log(updateUsers);
+      console.log(updateUsers);
 
-    setUsersInfo(updateUsers);
-    setShowRemoveUser(false);
+      setUsersInfo(updateUsers);
+      setShowRemoveUser(false);
+      setLoading(true);
+    } else {
+      setShowError(true);
+    }
   };
 
   return (
@@ -56,6 +64,10 @@ const RemoveUser = (props) => {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="remove-user-error">
+          {isErrorShow && <p>SELECT USER</p>}
         </div>
 
         <div className="remove-user-button">
