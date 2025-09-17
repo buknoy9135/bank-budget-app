@@ -14,6 +14,7 @@ const AddUser = (props) => {
     setUsersInfo,
     usersInfo,
     setLoading,
+    loggedInEmployee,
   } = props;
 
   const [userName, setUserName] = useState("");
@@ -81,7 +82,7 @@ const AddUser = (props) => {
         Email: email,
         Password: password,
         Balance: formatNumberWithCommas(amount),
-        Handled_by: "Onin",
+        Handled_by: loggedInEmployee.Name,
         Id: crypto.randomUUID(),
       };
 

@@ -136,6 +136,7 @@ const Home = () => {
           setUsersInfo={setUsersInfo}
           usersInfo={usersInfo}
           setLoading={setLoading}
+          loggedInEmployee={loggedInEmployee}
         />
       )}
 
