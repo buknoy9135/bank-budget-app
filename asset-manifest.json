@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/bank-budget-app/static/css/main.7dd0915d.css",
+    "main.js": "/bank-budget-app/static/js/main.b7f96cc2.js",
+    "static/js/453.7f6ec918.chunk.js": "/bank-budget-app/static/js/453.7f6ec918.chunk.js",
+    "static/media/close-button.png": "/bank-budget-app/static/media/close-button.daa7d4dc4ebb6f626bce.png",
+    "static/media/budget.png": "/bank-budget-app/static/media/budget.cb8e9e0da42a113b04d3.png",
+    "static/media/remove-user.png": "/bank-budget-app/static/media/remove-user.383314d02fe49469e117.png",
+    "static/media/login.png": "/bank-budget-app/static/media/login.b7dd2e54f4848832496d.png",
+    "static/media/add-user.png": "/bank-budget-app/static/media/add-user.017c4d39f3482adf1465.png",
+    "static/media/deposit.png": "/bank-budget-app/static/media/deposit.ea17e28e2da2b2fb4605.png",
+    "index.html": "/bank-budget-app/index.html",
+    "main.7dd0915d.css.map": "/bank-budget-app/static/css/main.7dd0915d.css.map",
+    "main.b7f96cc2.js.map": "/bank-budget-app/static/js/main.b7f96cc2.js.map",
+    "453.7f6ec918.chunk.js.map": "/bank-budget-app/static/js/453.7f6ec918.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7dd0915d.css",
+    "static/js/main.b7f96cc2.js"
+  ]
+}
